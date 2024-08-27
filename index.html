@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador/Desencriptador</title>
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <div class="presentacion">
+        <div class="contenido">
+            <!-- Sección izquierda: Entrada de texto y botones -->
+            <div class="contenido_lado_izquierdo">
+                <h1>Ingrese el texto aquí</h1>
+                <textarea id="inputTexto" rows="4" cols="50"
+                    placeholder="Ingresa el texto que desees encriptar o desencriptar."
+                    aria-label="Área de texto para ingresar texto a encriptar o desencriptar"></textarea>
+
+                <div class="options">
+                    <p>Solo letras minúsculas y sin acentos</p>
+                    <button class="btn-encriptar" onclick="encriptar()">Encriptar</button>
+                    <button class="btn-desencriptar" onclick="desencriptar()">Desencriptar</button>
+                </div>
+            </div>
+
+            <!-- Sección derecha: Imagen y resultado -->
+            <div class="lado_derecho">
+                <img src="./assets/muñeco.png" alt="Imagen de muñeco ilustrativo">
+                <p id="mensaje" aria-live="polite">Ningún mensaje fue encontrado</p>
+                <p id="resultado"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de encriptación y desencriptación -->
+    <script>
+        function encriptar() {
+            const texto = document.getElementById("inputTexto").value.trim();
+            if (texto) {
+                const textoEncriptado = texto
+                    .replace(/e/g, "enter")
+                    .replace(/i/g, "imes")
+                    .replace(/a/g, "ai")
+                    .replace(/o/g, "ober")
+                    .replace(/u/g, "ufat");
+                document.getElementById("resultado").innerText = textoEncriptado;
+                document.getElementById("mensaje").innerText = "";
+            } else {
+                document.getElementById("mensaje").innerText = "Ningún mensaje fue encontrado";
+            }
+        }
+
+        function desencriptar() {
+            const texto = document.getElementById("inputTexto").value.trim();
+            if (texto) {
+                const textoDesencriptado = texto
+                    .replace(/enter/g, "e")
+                    .replace(/imes/g, "i")
+                    .replace(/ai/g, "a")
+                    .replace(/ober/g, "o")
+                    .replace(/ufat/g, "u");
+                document.getElementById("resultado").innerText = textoDesencriptado;
+                document.getElementById("mensaje").innerText = "";
+            } else {
+                document.getElementById("mensaje").innerText = "Ningún mensaje fue encontrado";
+            }
+        }
+    </script>
+    <footer class="footer">
+        <p>Desarrollado por Yeyce Zambrano</p>
+    </footer>
+</body>
+
+</html>
